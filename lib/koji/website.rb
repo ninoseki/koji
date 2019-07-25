@@ -11,7 +11,7 @@ module Koji
 
     def initialize(url)
       @url = URI(url)
-    rescue URI::Error => _
+    rescue URI::Error => _e
       raise ArgumentError, "#{uri} is not a valid URL."
     end
 
@@ -37,8 +37,17 @@ module Koji
 
     private
 
+    def http
+      if proxy = ENV["HTTPS_PROXY"] || ENV["https_proxy"] || ENV["HTTP_PROXY"] || ENV["http_proxy"]
+        uri = URI(proxy)
+        HTTP.via(uri.hostname, uri.port)
+      else
+        HTTP
+      end
+    end
+
     def get
-      HTTP.get(url)
+      http.get(url)
     rescue OpenSSL::SSL::SSLError, HTTP::Error, Addressable::URI::InvalidURIError => e
       @exception = e
       nil
@@ -46,7 +55,7 @@ module Koji
 
     def parse_html(html)
       Oga.parse_html(html)
-    rescue ArgumentError, Encoding::CompatibilityError, LL::ParserError => _
+    rescue ArgumentError, Encoding::CompatibilityError, LL::ParserError => _e
       nil
     end
   end
