@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    var phpdebugbar = new PhpDebugBar.DebugBar();
+    phpdebugbar.addTab("messages", new PhpDebugBar.DebugBar.Tab({
+      "icon": "list-alt",
+      "title": "Messages",
+      "widget": new PhpDebugBar.Widgets.MessagesWidget()
+    }));
+    phpdebugbar.addIndicator("time", new PhpDebugBar.DebugBar.Indicator({
+      "icon": "clock-o",
+      "tooltip": "Request Duration"
+    }), "right");
+    phpdebugbar.addTab("timeline", new PhpDebugBar.DebugBar.Tab({
+      "icon": "tasks",
+      "title": "Timeline",
+      "widget": new PhpDebugBar.Widgets.TimelineWidget()
+    }));
+    phpdebugbar.addIndicator("memory", new PhpDebugBar.DebugBar.Indicator({
+      "icon": "cogs",
+      "tooltip": "Memory Usage"
+    }), "right");
+    phpdebugbar.addTab("exceptions", new PhpDebugBar.DebugBar.Tab({
+      "icon": "bug",
+      "title": "Exceptions",
+      "widget": new PhpDebugBar.Widgets.ExceptionsWidget()
+    }));
+    phpdebugbar.addTab("views", new PhpDebugBar.DebugBar.Tab({
+      "icon": "leaf",
+      "title": "Views",
+      "widget": new PhpDebugBar.Widgets.TemplatesWidget()
+    }));
+    phpdebugbar.addTab("route", new PhpDebugBar.DebugBar.Tab({
+      "icon": "share",
+      "title": "Route",
+      "widget": new PhpDebugBar.Widgets.VariableListWidget()
+    }));
+    phpdebugbar.addIndicator("currentroute", new PhpDebugBar.DebugBar.Indicator({
+      "icon": "share",
+      "tooltip": "Route"
+    }), "right");
+    phpdebugbar.addTab("queries", new PhpDebugBar.DebugBar.Tab({
+      "icon": "inbox",
+      "title": "Queries",
+      "widget": new PhpDebugBar.Widgets.SQLQueriesWidget()
+    }));
+    phpdebugbar.addTab("emails", new PhpDebugBar.DebugBar.Tab({
+      "icon": "inbox",
+      "title": "Mails",
+      "widget": new PhpDebugBar.Widgets.MailsWidget()
+    }));
+    phpdebugbar.addTab("session", new PhpDebugBar.DebugBar.Tab({
+      "icon": "archive",
+      "title": "Session",
+      "widget": new PhpDebugBar.Widgets.VariableListWidget()
+    }));
+    phpdebugbar.addTab("request", new PhpDebugBar.DebugBar.Tab({
+      "icon": "tags",
+      "title": "Request",
+      "widget": new PhpDebugBar.Widgets.VariableListWidget()
+    }));
+  </script>
+
+</body>
+
+</html>
